@@ -4,9 +4,12 @@ An Electron App for coder and developers to track tasks and question
 Further improvement will happen.
 
 ### Future Inclusions(in the coming quater):
--PouchDB integration with electron for tracking how many tasks done per day
+-Database integration with electron for tracking how many tasks done per day
+
 -including graphs and other analytics 
+
 -Contest Page
+
 -Contest Trackers
 
 
