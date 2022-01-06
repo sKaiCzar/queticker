@@ -12,8 +12,11 @@ const createWindow = () => {
     width: 500,
     height: 400,
     webPreferences: {
-      devTools: false
-      }
+      //devTools: false,
+      nodeIntegration: true,
+      contextIsolation: false,
+      enableRemoteModule: true,
+    },
   });
 
   // and load the index.html of the app.
@@ -44,8 +47,6 @@ app.on('activate', () => {
     createWindow();
   }
 });
-
-
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
