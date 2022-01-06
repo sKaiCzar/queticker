@@ -5,8 +5,6 @@ Further improvement will happen.
 
 ### Future Inclusions:
 
--Database integration with electron for tracking how many tasks done per day
-
 -including graphs and other analytics 
 
 -Contest Page
