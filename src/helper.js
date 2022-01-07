@@ -76,7 +76,7 @@ function bgCol() {
 function dateChangeCheck() {
     //checking date at the moment
     const rn = new Date();
-    if (rn.getMinutes()!==startupDate.getMinutes()) {
+    if (rn.getDate()!==startupDate.getDate()) {
         let data= {
                 "date" : startupDate.toLocaleDateString("en-US"),
                 "tasks" : localStorage.clickcount
