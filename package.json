@@ -1,8 +1,8 @@
 {
   "name": "queticker",
   "productName": "queticker",
-  "version": "1.0.0",
-  "description": "My Electron application description",
+  "version": "1.1.0",
+  "description": "Question Tracker offline",
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",
