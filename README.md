@@ -1,4 +1,4 @@
-# queticker
+# QueTicker
 
 An Electron App for coder and developers to track tasks and question
 Further improvement will happen.
