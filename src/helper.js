@@ -1,7 +1,7 @@
-//requiring fs
-const fs = require('fs');
+//calling nedb
+const dataStore = require('nedb');
 
-const filePath = './src/dataStore/record.json';
+var records = new dataStore({filename : './src/dataStore/record.json', autoload : true});
 
 //document for outputing no of questions done
 var quant = document.getElementById("showCount");
@@ -77,21 +77,15 @@ function dateChangeCheck() {
     //checking date at the moment
     const rn = new Date();
     if (rn.getMinutes()!==startupDate.getMinutes()) {
-        var file = fs.readFileSync(filePath);
-        var dat = [];
-        dat.push(JSON.parse(file));
         let data= {
                 "date" : startupDate.toLocaleDateString("en-US"),
                 "tasks" : localStorage.clickcount
             };
-        dat.push(data);
-        var nextData = JSON.stringify(dat);
-        fs.writeFile( filePath, nextData, (err) => {
-            if (err) throw err;
-            console.log("New data added");
-        });
+            records.insert(data, function(err, doc) {
+                console.log('Inserted', doc.name, 'with ID', doc._id);
+            });
 
-        localStorage.clickcount = 1;
+        localStorage.clickcount = 0;
         startupDate = rn;
     }
 }
