@@ -3,15 +3,22 @@
     <head>
         <meta charset="utf-8">
         <title>QueTicker</title>
-        <link rel="stylesheet" href="/master.css">
+        <link rel="stylesheet" href="./css/master.css">
     </head>
     <body>
         <h1>QueTicker</h1>
         <h5>A Question Tracker for Developers and Competitive coders</h5>
         <div class="add_group">
             <form class="addCont" action="#" method="post">
-                <label></label>
-                <input type="text" placeholder="">
+                <label>Name of Contest</label>
+                <input type="text" id="name" name="name" required>
+                <label>Date of Contest</label>
+                <input type="date" id="date" name="date" required>
+                <label>Rating of Contest</label>
+                <input type="text" id="rating" name="rating" required>
+                <label>URL of Contest</label>
+                <input type="url" id="url" name="url" required>
+                <button type="submit">Submit</button>
             </form>
             <script type="text/javascript" src="contest.js" charset="utf-8"></script>
             <a href="./contest.html">Enter the Contest Page</a>
