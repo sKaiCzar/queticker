@@ -12,11 +12,21 @@ var quant = document.getElementById("showCount");
 const formData = document.forms[0];
 
 formData.addEventListener("submit", function(event) {
-  event.preventDefault();
-  const { name, date, rating, url } = this.elements;
-  // or
-  // const { name, description, task } = event.target.elements;
-  console.log(name.value, date.value, rating.value, url.value);
+    event.preventDefault();
+    const { name, date, rating, url } = this.elements;
+    // or
+    // const { name, description, task } = event.target.elements;
+    //console.log(name.value, date.value, rating.value, url.value);
+    let data= {
+        "name" : this.name,
+        "date" : this.date,
+        "rating" : this.rating,
+        "url" : this.url
+    };
+    contests.insert(data, function(err, doc) {
+        console.log('Inserted', doc.name, 'with ID', doc._id);
+    });
+
 });
 
 
