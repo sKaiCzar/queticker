@@ -58,7 +58,7 @@ function incr() {
 //decrement function
 function decr() {
     if (localStorage.clickcount) {
-        localStorage.clickcount = Number(localStorage.clickcount) - 1;
+        localStorage.clickcount = Math.max(Number(0,localStorage.clickcount) - 1);
     }
     else {
         localStorage.clickcount = 0;
