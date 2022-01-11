@@ -3,39 +3,23 @@ const dataStore = require('nedb');
 
 var contests = new dataStore({filename : './src/dataStore/contests.json', autoload : true});
 
-const express = require(“express”);
-const app = express();
-
 //document for outputing no of questions done
-var quant = document.getElementById("showCount");
+var cons = document.getElementsByClassName('cnt_counter');
 
-const formData = document.forms[0];
+var x = null;
 
-formData.addEventListener("submit", function(event) {
-    event.preventDefault();
-    const { name, date, rating, url } = this.elements;
-    // or
-    // const { name, description, task } = event.target.elements;
-    //console.log(name.value, date.value, rating.value, url.value);
-    let data= {
-        "name" : this.name,
-        "date" : this.date,
-        "rating" : this.rating,
-        "url" : this.url
-    };
-    contests.insert(data, function(err, doc) {
-        console.log('Inserted', doc.name, 'with ID', doc._id);
-    });
-
+contest.find({}, function (err, docs) {
+    if (err) {
+        console.log(err);
+    }
+    x = docs;
 });
 
-
-app.get(“/”, (req, res) => {
-    contests.find({}, function (err,docs){
-        if (err) {
-            console.log(err);
-        }
-    }).then(data => {
-        res.render(“index”, { todos: data });
-    }).catch(err => res.status(400).json(err));
+forEach((doc, x) => {
+    var {name, date, rating, url} = doc;
+    if (cons) {
+        var hr = document.createElement("hr");
+        hr.appendChild(document.createTextNode(""+ name + " " + date + " " + rating " " + url + "."));
+        document.getElementById("container").appendChild(hr);
+    }
 });
