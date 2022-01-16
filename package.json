@@ -1,56 +1,86 @@
 {
-  "name": "QueTicker",
-  "version": "2.0.0",
-  "productName": "QueTicker",
-  "description": "Question Tracker offline",
-  "private": false,
-  "homepage": "./",
-  "main": "public/electron.js",
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.16.1",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.5.0",
-    "concurrently": "^7.0.0",
-    "electron-is-dev": "^2.0.0",
-    "nedb": "^1.8.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "5.0.0",
-    "wait-on": "^6.0.0",
-    "web-vitals": "^2.1.3"
-  },
+    "name": "QueTicker",
+    "version": "2.0.0",
+    "productName": "QueTicker",
+    "description": "Question Tracker offline","main": ".webpack/main",
   "scripts": {
-      "react-start": "SET BROWSER=none && react-scripts start",
-      "react-build": "react-scripts build",
-      "start": "concurrently \"SET BROWSER=none && npm run react-start\" \"wait-on http://localhost:3000 && electron .\"",
-      "build": "react-scripts build",
-      "test": "react-scripts test",
-      "eject": "react-scripts eject"
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\""
   },
+  "keywords": [],
   "author": {
     "name": "sKaiCzar",
     "email": "ujjwalgyan5@gmail.com"
   },
   "license": "MIT",
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "my_new_app"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ],
+      "plugins": [
+        [
+          "@electron-forge/plugin-webpack",
+          {
+            "mainConfig": "./webpack.main.config.js",
+            "renderer": {
+              "config": "./webpack.renderer.config.js",
+              "entryPoints": [
+                {
+                  "html": "./src/index.html",
+                  "js": "./src/renderer.js",
+                  "name": "main_window"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    }
   },
   "devDependencies": {
-    "electron": "^16.0.6"
+    "@babel/core": "^7.16.7",
+    "@babel/preset-react": "^7.16.7",
+    "@electron-forge/cli": "^6.0.0-beta.61",
+    "@electron-forge/maker-deb": "^6.0.0-beta.61",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.61",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.61",
+    "@electron-forge/maker-zip": "^6.0.0-beta.61",
+    "@electron-forge/plugin-webpack": "6.0.0-beta.61",
+    "@vercel/webpack-asset-relocator-loader": "1.7.0",
+    "babel-loader": "^8.2.3",
+    "css-loader": "^6.0.0",
+    "electron": "16.0.7",
+    "node-loader": "^2.0.0",
+    "style-loader": "^3.0.0"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0",
+    "nedb": "^1.8.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   }
 }
