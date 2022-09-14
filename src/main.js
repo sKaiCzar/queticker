@@ -12,7 +12,7 @@ const createWindow = () => {
     width: 900, //500
     height: 700, //400
     webPreferences: {
-        //devTools: false,
+      //devTools: false,
       nodeIntegration: true,
       contextIsolation: false,
       enableRemoteModule: true,
